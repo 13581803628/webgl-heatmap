@@ -1,98 +1,98 @@
-WebGL Heatmap
+WebGL 热力图
 =============
 
-webgl-heatmap.js is a JavaScript library for high performance heatmap display.
+webgl-heatmap.js 是一个高性能的热力图显示 JavaScript 库。
 
-Demo
+演示
 ----
 
-Live Demo at [codeflow.org](http://codeflow.org/entries/2013/feb/04/high-performance-js-heatmaps "")  
+在线演示地址: [codeflow.org](http://codeflow.org/entries/2013/feb/04/high-performance-js-heatmaps) http://codeflow.org/entries/2013/feb/04/high-performance-js-heatmaps
 
-How to use it
+怎么使用它
 -------------
 
-Instantiate a new heatmap, errors can be one of:
+实例化一个新的热力图，可能会遇到以下异常情况:
 
- * Webgl is not supported
- * No floating point texture support
- * Floating point render target not supported
- * Shader Compile Error: ...
- * Shader Link Error: ...
+ * 不支持 Webgl
+ * 不支持浮点纹理
+ * 不支持浮点渲染指针
+ * 着色器编译异常: ...
+ * 着色器链接异常: ...
 
 ```javascript
 try{
     var heatmap = createWebGLHeatmap({canvas: yourCanvas});
 }
 catch(error){
-    // handle the error
+    // 处理异常
 }
 ```
 
-creation arguments
+构造参数
 
- * canvas: the canvas you wish to draw on
- * width: explicit width
- * height: explicit height
- * intensityToAlpha: defaults to true
- * gradientTexture: texture used instead of color calculation, can be path or an image
+ * canvas: 你想要绘制热力图的 canvas 画布
+ * width: 显示宽度
+ * height: 显示高度
+ * intensityToAlpha: 默认值为 true
+ * gradientTexture: 纹理使用而不是颜色计算，可以是路径或图像
 
-Add a data point.
+添加一个数据点
 
- * x and y relative to the canvas in pixels
- * size in pixels (radius)
- * intensity between 0 and 1
+ * x、y:  像素位置，相对于 canvas 画布的 x 和 y 像素值
+ * size: 像素尺寸（半径）
+ * intensity: 0 到 1 之间的透明度
 
 ```javascript
 heatmap.addPoint(x, y, size, intensity);
 ```
 
-Add a list of data points.
+添加一列数据点
 
- * x and y relative to the canvas in pixels
- * size in pixels (radius)
- * intensity between 0 and 1
+ * x、y: 数据点相对于 canvas 画布的像素位置
+ * size: 数据点辐射区域大小（半径）
+ * intensity: 0 到 1 之间的透明度
 
 ```javascript
 heatmap.addPoints([{x:x, y:y, size:size, intensity:intensity}]);
 ```
 
-Draw queued data points:
+绘制数据点堆栈:
 
 ```javascript
 heatmap.update()
 ```
 
-Display the heatmap
+显示热力图:
 
 ```javascript
 heatmap.display()
 ```
 
-Multiply all values in the heatmap by a number (useful for decay)
+将热力图中的所有值乘以一个数字(对衰变有用):
 
 ```javascript
 heatmap.multiply(0.995)
 ```
 
-Clamp all values in the heatmap to between two values:
+将热图中的所有值夹在两个值之间:
 
 ```javascript
 heatmap.clamp(0.0, 1.0)
 ```
 
-Blur all values a little:
+对热力图进行轻微模糊处理:
 
 ```javascript
 heatmap.blur()
 ```
 
-License
+许可
 -------
 
 Copyright (c) 2013, Florian Boesch <pyalot@gmail.com> http://codeflow.org/
 
-WebGL Heatmap is licensed under any of the following licenses at your choosing:
+WebGL 热力图在以下许可下:
 
- * MIT: see mit-license
- * GPL: see gplv*-license
- * BSD: see bsd-license
+ * MIT: 详见 mit-license
+ * GPL: 详见 gplv*-license
+ * BSD: 详见 bsd-license
